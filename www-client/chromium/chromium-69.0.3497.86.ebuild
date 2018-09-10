@@ -184,7 +184,8 @@ src_prepare() {
 
 	default
 
-	use widevine && eapply "${FILESDIR}/${PN}-widevine-r2.patch"
+	# Widevine patch. Note: Already included in Inox and Ungoogled patchsets.
+	use widevine && ! (use inox || use ungoogled) && eapply "${FILESDIR}/${PN}-widevine-r2.patch"
 
 	if use inox; then
 		# Inox patchset
